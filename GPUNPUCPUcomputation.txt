@@ -1,0 +1,24 @@
+Adjusting the colors to match the original image
+fig, ax = plt.subplots()
+
+Define the colors to match the original image
+colors = ['#FFA500', '#FF4500', '#FF1493']  # CPU (Orange), GPU (Red-Orange), NPU (Deep Pink)
+
+rects1 = ax.bar(x - width, cpu_scores, width, label='CPU', color=colors[0])
+rects2 = ax.bar(x, gpu_scores, width, label='GPU', color=colors[1])
+rects3 = ax.bar(x + width, npu_scores, width, label='NPU', color=colors[2])
+
+Add some text for labels, title and custom x-axis tick labels, etc.
+ax.set_ylabel('Performance Score')
+ax.set_title('Performance Comparison by Task Type')
+ax.set_xticks(x)
+ax.set_xticklabels(task_types)
+ax.legend()
+
+autolabel(rects1)
+autolabel(rects2)
+autolabel(rects3)
+
+fig.tight_layout()
+
+plt.show()
